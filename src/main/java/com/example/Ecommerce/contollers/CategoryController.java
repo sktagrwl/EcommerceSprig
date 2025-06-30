@@ -16,6 +16,7 @@ public class  CategoryController {
 
     //Constructor based Dependency Injection
     public CategoryController(ICategoryService _categoryService) {
+
         this.categoryService = _categoryService;
     }
 
@@ -23,6 +24,7 @@ public class  CategoryController {
     public List<CategoryDTO> getAllCategories() throws IOException {
         return this.categoryService.getAllCategories();
     }
+
 
 }
 
