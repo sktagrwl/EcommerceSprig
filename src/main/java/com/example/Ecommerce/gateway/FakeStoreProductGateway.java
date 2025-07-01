@@ -18,7 +18,7 @@ public class FakeStoreProductGateway implements IProductGateway{
         this.fakeStoreProductApi = fakeStoreProductApi;
     }
     @Override
-    public Map<String , ProductDTO> getAllProducts() throws IOException {
+    public Map<Integer , ProductDTO> getAllProducts() throws IOException {
 
         FakeStoreProductResponseDTO response = this.fakeStoreProductApi.getAllFakeProducts().execute().body();
 
@@ -28,6 +28,6 @@ public class FakeStoreProductGateway implements IProductGateway{
         }
 
         return response.getProducts().stream()
-                .collect(Collectors.toMap(product -> product.id, product -> product));
+                .collect(Collectors.toMap(ProductDTO::getId, product -> product));
     }
 }

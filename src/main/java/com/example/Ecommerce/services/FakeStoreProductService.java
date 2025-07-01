@@ -19,7 +19,7 @@ public class FakeStoreProductService implements IProductService{
 
 
     @Override
-    public Map<String, ProductDTO> getAllProducts() throws IOException {
+    public Map<Integer, ProductDTO> getAllProducts() throws IOException {
         return this.productGateway.getAllProducts();
     }
 }

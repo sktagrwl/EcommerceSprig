@@ -1,7 +1,6 @@
 package com.example.Ecommerce.gateway.api;
 
 import com.example.Ecommerce.dto.FakeStoreCategoryResponseDTO;
-import org.springframework.stereotype.Component;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

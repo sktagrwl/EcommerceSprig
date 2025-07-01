@@ -1,0 +1,10 @@
+package com.example.Ecommerce.services;
+
+import com.example.Ecommerce.dto.ProductDTO;
+
+import java.io.IOException;
+
+public interface IProductByIdService {
+
+    ProductDTO getProductById(Long ProductId) throws IOException;
+}
