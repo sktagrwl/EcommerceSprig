@@ -2,6 +2,7 @@ package com.example.Ecommerce.contollers;
 
 import com.example.Ecommerce.dto.ProductDTO;
 import com.example.Ecommerce.services.ISingleProductService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,8 @@ public class SingleProductController {
     }
 
     @GetMapping
-    public ProductDTO getSingleProduct() throws IOException {
-        return this.singleProductService.getSingleProduct();
+    public ResponseEntity<ProductDTO> getSingleProduct() throws IOException {
+        ProductDTO result = this.singleProductService.getSingleProduct();
+        return ResponseEntity.ok(result);
     }
 }

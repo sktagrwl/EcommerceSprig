@@ -1,8 +1,10 @@
 package com.example.Ecommerce.contollers;
 
+import com.example.Ecommerce.dto.CategoryDTO;
 import com.example.Ecommerce.dto.ProductDTO;
 import com.example.Ecommerce.services.ICategoryService;
 import com.example.Ecommerce.services.IProductService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +24,10 @@ public class ProductCategoryController {
     }
 
     @GetMapping
-    public Map<String , ProductDTO> getAllProduct() throws IOException {
-        return this.productService.getAllProducts();
+    public ResponseEntity<Map<String , ProductDTO>> getAllProduct() throws IOException {
+        Map<String , ProductDTO> result = this.productService.getAllProducts();
+
+        return ResponseEntity.ok(result);
     };
 
 }
