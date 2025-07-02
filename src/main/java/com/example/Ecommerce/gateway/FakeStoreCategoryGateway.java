@@ -3,6 +3,7 @@ package com.example.Ecommerce.gateway;
 import com.example.Ecommerce.dto.CategoryDTO;
 import com.example.Ecommerce.dto.FakeStoreCategoryResponseDTO;
 import com.example.Ecommerce.gateway.api.FakeStoreCategoryApi;
+import com.example.Ecommerce.mappers.GetAllCategoryMapper;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -28,10 +29,6 @@ public class FakeStoreCategoryGateway implements ICategoryGateway {
             throw new IOException("Failed to fetch categories from FakeStore API");
         }
         //3. Map the response to a list of CategoryDTO objects
-        return response.getCategories().stream()
-                .map(category -> CategoryDTO.builder()
-                        .name(category)
-                        .build())
-                .toList();
+        return GetAllCategoryMapper.toCategoryDTO(response);
     }
 }
