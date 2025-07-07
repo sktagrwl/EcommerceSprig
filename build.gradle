@@ -38,6 +38,10 @@ dependencies {
 	// converter-gson
 	implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
 }
 
 tasks.named('test') {

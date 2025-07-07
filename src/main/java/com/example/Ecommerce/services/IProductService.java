@@ -8,6 +8,6 @@ import java.util.Map;
 
 public interface IProductService {
 
-    Map<Integer,ProductDTO> getAllProducts() throws IOException;
+    Map<Long,ProductDTO> getAllProducts() throws IOException;
 
 }

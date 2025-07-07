@@ -23,5 +23,10 @@ public class FakeStoreProductByIdService implements IProductByIdService{
 
     }
 
+    @Override
+    public ProductDTO createProduct(ProductDTO dto) throws IOException {
+        return null;
+    }
+
 
 }

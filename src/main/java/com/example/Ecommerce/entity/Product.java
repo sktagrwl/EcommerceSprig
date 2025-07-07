@@ -1,13 +1,17 @@
-package com.example.Ecommerce.dto;
+package com.example.Ecommerce.entity;
 
+
+import jakarta.persistence.Entity;
 import lombok.*;
 
-@Setter
 @Getter
-@AllArgsConstructor
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @Builder
-public class ProductDTO {
+public class Product extends BaseEntity{
+
     private String image;
     private String color;
     private int price;
@@ -19,6 +23,5 @@ public class ProductDTO {
     private String category;
     private String brand;
     private boolean popular;
-
 
 }

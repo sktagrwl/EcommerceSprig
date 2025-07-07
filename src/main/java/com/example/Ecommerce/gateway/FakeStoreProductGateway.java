@@ -18,7 +18,7 @@ public class FakeStoreProductGateway implements IProductGateway{
         this.fakeStoreProductApi = fakeStoreProductApi;
     }
     @Override
-    public Map<Integer , ProductDTO> getAllProducts() throws IOException {
+    public Map<Long, ProductDTO> getAllProducts() throws IOException {
 
         FakeStoreProductResponseDTO response = this.fakeStoreProductApi.getAllFakeProducts().execute().body();
 

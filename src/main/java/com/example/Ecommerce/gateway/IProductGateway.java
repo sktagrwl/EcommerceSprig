@@ -7,5 +7,5 @@ import java.util.Map;
 
 public interface IProductGateway {
 
-    Map<Integer, ProductDTO> getAllProducts() throws IOException;
+    Map<Long, ProductDTO> getAllProducts() throws IOException;
 }
