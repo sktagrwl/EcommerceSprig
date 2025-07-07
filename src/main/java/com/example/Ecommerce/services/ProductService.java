@@ -4,11 +4,9 @@ import com.example.Ecommerce.dto.ProductDTO;
 import com.example.Ecommerce.entity.Product;
 import com.example.Ecommerce.mappers.ProductMapper;
 import com.example.Ecommerce.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Map;
 
 @Service("ProductService")
 public class ProductService implements IProductByIdService{
