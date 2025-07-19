@@ -1,6 +1,7 @@
 package com.example.Ecommerce.mappers;
 
 import com.example.Ecommerce.dto.ProductDTO;
+import com.example.Ecommerce.entity.Category;
 import com.example.Ecommerce.entity.Product;
 
 public class ProductMapper {
@@ -14,13 +15,13 @@ public class ProductMapper {
                 .description(product.getDescription())
                 .model(product.getModel())
                 .title(product.getTitle())
-                .category(product.getCategory())
+                .categoryId(product.getCategory().getId())
                 .brand(product.getBrand())
                 .popular(product.isPopular())
                 .build();
     }
 
-    public static Product toEntity(ProductDTO dto) {
+    public static Product toEntity(ProductDTO dto, Category category) {
         return Product.builder()
                 .image(dto.getImage())
                 .color(dto.getColor())
@@ -28,7 +29,7 @@ public class ProductMapper {
                 .description(dto.getDescription())
                 .model(dto.getModel())
                 .title(dto.getTitle())
-                .category(dto.getCategory())
+                .category(category)
                 .brand(dto.getBrand())
                 .popular(dto.isPopular())
                 .build();

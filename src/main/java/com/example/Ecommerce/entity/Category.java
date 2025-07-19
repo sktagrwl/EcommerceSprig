@@ -1,9 +1,10 @@
 package com.example.Ecommerce.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -15,5 +16,9 @@ public class Category extends BaseEntity{
 
     @Column(nullable = false, unique = true)
     private String name;
+
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Product> products;
 
 }
