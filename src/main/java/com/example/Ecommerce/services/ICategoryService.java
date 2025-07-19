@@ -11,4 +11,6 @@ public interface ICategoryService {
 
     CategoryDTO createCategory(CategoryDTO categoryDTO) throws IOException;
 
+    CategoryDTO getByName(String name) throws IOException;
+
 }

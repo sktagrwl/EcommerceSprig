@@ -7,6 +7,7 @@ public class CategoryMapper {
 
     public static CategoryDTO toDto(Category category) {
         return CategoryDTO.builder()
+                .id(category.getId())
                 .name(category.getName())
                 .build();
     }
