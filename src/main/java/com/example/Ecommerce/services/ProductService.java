@@ -1,6 +1,7 @@
 package com.example.Ecommerce.services;
 
 import com.example.Ecommerce.dto.ProductDTO;
+import com.example.Ecommerce.dto.ProductWithCategoryDTO;
 import com.example.Ecommerce.entity.Category;
 import com.example.Ecommerce.entity.Product;
 import com.example.Ecommerce.mappers.ProductMapper;
@@ -45,6 +46,15 @@ public class ProductService implements IProductByIdService{
 
         //and then we will convert the entity to DTO and return
         return ProductMapper.toDto(saved);
+
+    }
+
+    @Override
+    public ProductWithCategoryDTO getProductWithCategory(Long id) throws IOException {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new IOException("Product not Found"));
+
+        return ProductMapper.toProductWithCategoryDTO(product);
 
     }
 }

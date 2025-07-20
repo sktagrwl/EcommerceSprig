@@ -1,10 +1,13 @@
 package com.example.Ecommerce.contollers;
 
 import com.example.Ecommerce.dto.ProductDTO;
+import com.example.Ecommerce.dto.ProductWithCategoryDTO;
 import com.example.Ecommerce.services.IProductByIdService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import retrofit2.http.Path;
 
 import java.io.IOException;
 
@@ -34,4 +37,12 @@ public class ProductByIdController {
 
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping("/{id}/details")
+    public ResponseEntity<ProductWithCategoryDTO> getProductWithCategory(@PathVariable Long id) throws IOException {
+        ProductWithCategoryDTO dto = productByIdService.getProductWithCategory(id);
+        return ResponseEntity.ok(dto);
+    }
+
+
 }

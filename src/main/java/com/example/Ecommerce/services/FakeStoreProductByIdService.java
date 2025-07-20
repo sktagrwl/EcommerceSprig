@@ -1,6 +1,7 @@
 package com.example.Ecommerce.services;
 
 import com.example.Ecommerce.dto.ProductDTO;
+import com.example.Ecommerce.dto.ProductWithCategoryDTO;
 import com.example.Ecommerce.gateway.IProductByIdGateway;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,12 @@ public class FakeStoreProductByIdService implements IProductByIdService{
 
     @Override
     public ProductDTO createProduct(ProductDTO dto) throws IOException {
+        return null;
+    }
+
+    @Override
+    public ProductWithCategoryDTO getProductWithCategory(Long id) throws IOException {
+
         return null;
     }
 
