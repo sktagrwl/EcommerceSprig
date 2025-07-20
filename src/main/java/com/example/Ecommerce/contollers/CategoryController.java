@@ -1,5 +1,6 @@
 package com.example.Ecommerce.contollers;
 
+import com.example.Ecommerce.dto.AllProductsOfACategoryDTO;
 import com.example.Ecommerce.dto.CategoryDTO;
 import com.example.Ecommerce.services.ICategoryService;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -40,8 +41,11 @@ public class  CategoryController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/{id}/products")
+    public ResponseEntity<?> getAllProductsOfACategory(@PathVariable Long id) throws IOException{
+        AllProductsOfACategoryDTO allProductsOfACategoryDTO = categoryService.getAllProductsOfACategory(id);
+        return ResponseEntity.ok(allProductsOfACategoryDTO);
+    }
+
 
 }
-
-
-// new CategoryController(new fakeStoreCategoryService());
