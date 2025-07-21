@@ -2,9 +2,13 @@ package com.example.Ecommerce.contollers;
 
 import com.example.Ecommerce.dto.ProductDTO;
 import com.example.Ecommerce.dto.ProductWithCategoryDTO;
+import com.example.Ecommerce.exception.CategoryNotFoundException;
+import com.example.Ecommerce.exception.ProductNotFoundException;
 import com.example.Ecommerce.services.IProductByIdService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import retrofit2.http.Path;
@@ -42,6 +46,16 @@ public class ProductByIdController {
     public ResponseEntity<ProductWithCategoryDTO> getProductWithCategory(@PathVariable Long id) throws IOException {
         ProductWithCategoryDTO dto = productByIdService.getProductWithCategory(id);
         return ResponseEntity.ok(dto);
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<String> handleProductNotFound(ProductNotFoundException ex){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<?> handleCategoryNotFound(CategoryNotFoundException ex){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
 
