@@ -2,11 +2,8 @@ package com.example.Ecommerce.contollers;
 
 import com.example.Ecommerce.dto.AllProductsOfACategoryDTO;
 import com.example.Ecommerce.dto.CategoryDTO;
-import com.example.Ecommerce.exception.CategoryNotFoundException;
 import com.example.Ecommerce.services.ICategoryService;
-import jakarta.persistence.ElementCollection;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,12 +46,5 @@ public class  CategoryController {
         AllProductsOfACategoryDTO allProductsOfACategoryDTO = categoryService.getAllProductsOfACategory(id);
         return ResponseEntity.ok(allProductsOfACategoryDTO);
     }
-
-    @ExceptionHandler(CategoryNotFoundException.class)
-    public ResponseEntity<?> handleCategoryNotFound(CategoryNotFoundException ex){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-    }
-
-
 
 }
