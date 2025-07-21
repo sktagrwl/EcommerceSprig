@@ -25,6 +25,11 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//Flyaway Migration
+	implementation 'org.flywaydb:flyway-core:11.10.2'
+	//Flyaway MySQL driver
+	implementation 'org.flywaydb:flyway-mysql:11.7.2'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
