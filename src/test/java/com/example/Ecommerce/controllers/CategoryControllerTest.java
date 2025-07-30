@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -38,6 +39,7 @@ public class CategoryControllerTest {
     private CategoryDTO categoryDTO1;
     private CategoryDTO categoryDTO2;
     private CategoryDTO categoryDTO3;
+    private String jsonRequestBody;
 
     @BeforeEach
     void setUp() {
@@ -47,6 +49,12 @@ public class CategoryControllerTest {
         categoryDTO1 = CategoryDTO.builder().name("Audio").id(1L).build();
         categoryDTO2 = CategoryDTO.builder().name("Electronics").id(2L).build();
         categoryDTO3 = CategoryDTO.builder().name("Footwear").id(3L).build();
+        jsonRequestBody = """
+                {
+                    "name":"Audio",
+                    "id":1
+                }
+                """;
     }
 
     @Test
@@ -70,5 +78,22 @@ public class CategoryControllerTest {
                 .andExpect(jsonPath("$[2].name").value("Footwear"));
         //Assert
         verify(categoryService, times(1)).getAllCategories();
+    }
+
+    @Test
+    @DisplayName("POST /api/categories should create a new Category")
+    void createCategory_shouldCreateACategory() throws Exception {
+        //Arrange
+        when(categoryService.createCategory(any(CategoryDTO.class))).thenReturn(categoryDTO1);
+
+        //Act
+        mockMvc.perform(post("/api/categories").contentType(MediaType.APPLICATION_JSON)
+                .content(jsonRequestBody))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Audio"));
+
+        //Assert
+        verify(categoryService, times(1)).createCategory(any(CategoryDTO.class));
+
     }
 }
